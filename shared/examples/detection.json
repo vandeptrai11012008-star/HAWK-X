@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "event_id": "DEMO-001",
+  "source": "synthetic-demo",
+  "captured_at": "2026-11-04T12:00:00Z",
+  "detection": {
+    "class": "person",
+    "confidence": 0.87,
+    "track_id": "demo-track-1"
+  },
+  "location": {
+    "valid": false,
+    "frame_id": null,
+    "xyz_m": null
+  },
+  "review_status": "unreviewed",
+  "note": "Synthetic demonstration data, not a real person or rescue alert"
+}
