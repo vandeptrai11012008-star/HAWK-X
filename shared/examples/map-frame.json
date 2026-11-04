@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1",
+  "source": "synthetic-demo",
+  "frame_id": "map-local",
+  "coordinate_system": "LOCAL_ENU_METERS",
+  "captured_at": "2026-11-04T12:00:00Z",
+  "geo_referenced": false,
+  "points_xyz_m": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0.2
+    ],
+    [
+      1,
+      1,
+      0.3
+    ],
+    [
+      2,
+      1,
+      0.15
+    ],
+    [
+      0,
+      2,
+      0.1
+    ],
+    [
+      1,
+      2,
+      0.5
+    ],
+    [
+      2,
+      2,
+      0.4
+    ],
+    [
+      1,
+      3,
+      1
+    ],
+    [
+      1.5,
+      3,
+      1.2
+    ]
+  ],
+  "note": "Synthetic, not LiDAR or terrain measurements"
+}
