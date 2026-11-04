@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HAWK-X | Rescue HQ — Synthetic Demo</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;background:#08131c;color:#e8f2f8}
+*{box-sizing:border-box}body{margin:0}header{padding:22px 26px;border-bottom:1px solid #243848;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+h1{font-size:25px;margin:0}header p{margin:7px 0 0;color:#9fb5c6}mark{background:#4b3d18;color:#ffe7a8;border-radius:8px;padding:7px 10px}
+main{padding:22px;display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:18px}.panel{border:1px solid #29404f;border-radius:16px;padding:18px;background:#10222d}
+h2{font-size:16px;margin:0 0 12px}.small{font-size:13px;color:#9fb5c6;line-height:1.5}.map{width:100%;background:#0b2933;border:1px solid #284759;border-radius:10px;display:block;max-height:350px}
+.point{fill:#63d1b9}.link{stroke:#63d1b9;stroke-width:3;fill:none;stroke-dasharray:5 7}.badge{display:inline-block;padding:5px 10px;border-radius:20px;background:#493d26;color:#f8d69c;font-size:12px}
+button{padding:10px 14px;border-radius:10px;background:#133747;border:1px solid #4d8194;color:#e4fcff;cursor:pointer}button:focus-visible{outline:3px solid #6bd6d2}button[aria-pressed=true]{background:#26716d}
+pre{white-space:pre-wrap;font-size:12px;color:#a8cbd9}#events{min-height:120px}footer{padding:0 22px 18px;color:#a5b9c5;font-size:13px}
+@media(max-width:850px){main{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div><h1>HAWK-X · Rescue HQ</h1><p>Onboard AI + 3D mapping + human verification</p></div><mark>SYNTHETIC DATA · NOT LIVE</mark></header>
+<main>
+<section class="panel">
+<h2>Mission map</h2><p class="small">Illustrative local 2D map. No validated geographic coordinates.</p>
+<svg class="map" viewBox="0 0 600 280" role="img" aria-label="Illustrative 2D map with a planned route and an unverified detection">
+<defs><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#345768" stroke-width=".65"/></pattern></defs>
+<rect width="600" height="280" fill="url(#grid)"/><path d="M0 200 Q150 100 260 170 T600 100" stroke="#326a68" stroke-width="34" fill="none" opacity=".5"/>
+<path class="link" d="M80 230 L170 192 L270 147 L390 120"/><circle cx="390" cy="120" r="8" class="point"/>
+<text x="402" y="112" fill="#d9faf4" font-size="14">Demo drone marker</text>
+<circle cx="466" cy="195" r="13" fill="none" stroke="#e2af69" stroke-width="3"/><text x="404" y="223" fill="#ffd6a2" font-size="13">Unlocated alert</text>
+</svg>
+<p class="small">The detection is deliberately not assigned a map position: its location is unverified.</p>
+<h2>3D environment preview</h2><p class="small">Projected synthetic XYZ points; no real LiDAR measurements.</p>
+<svg class="map" id="cloud" viewBox="0 0 600 220" role="img" aria-label="Illustrative 3D point cloud"></svg>
+</section>
+<aside class="panel">
+<h2>Operator review</h2><div class="badge">1 example alert · unreviewed</div>
+<p id="events">Synthetic person detection (DEMO-001). Confidence: 0.87. Location unavailable.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button id="confirm">Mark for review</button><button id="reject">Dismiss demo alert</button><button id="reset">Reset</button></div>
+<p id="review" class="small" role="status">No operator action recorded.</p>
+<h2>System state</h2>
+<pre>Vision AI: sample event only
+Mapping: synthetic frame only
+Autonomous flight: not implemented
+HQ connection: offline demo</pre>
+</aside>
+</main>
+<footer>HAWK-X research starter · No live sensors, no remote surveillance, no rescue or flight claims.</footer>
+<script>
+const svg=document.querySelector('#cloud');
+const ns='http://www.w3.org/2000/svg';
+const pts=[[0,0,0],[1,0,0],[2,0,0],[0,1,.2],[1,1,.3],[2,1,.15],[0,2,.1],[1,2,.5],[2,2,.4],[1,3,1],[1.5,3,1.2]];
+for(const [x,y,z] of pts){let el=document.createElementNS(ns,'circle');el.setAttribute('cx',String(120+x*70+y*30));el.setAttribute('cy',String(170-y*27-z*40-x*12));el.setAttribute('r','5');el.setAttribute('fill',z>.7?'#e6b36f':'#6bdac0');svg.append(el);}
+const status=document.querySelector('#review');
+document.querySelector('#confirm').onclick=()=>status.textContent='Demo event marked for review (not saved).';
+document.querySelector('#reject').onclick=()=>status.textContent='Demo event dismissed (not saved).';
+document.querySelector('#reset').onclick=()=>status.textContent='No operator action recorded.';
+</script>
+</body>
+</html>
