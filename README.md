@@ -49,6 +49,17 @@ Alternatively use an image file: `yolo predict model=yolo11n.pt source="C:\path\
 
 The `yolo11n.pt` checkpoint is pretrained and is downloaded or loaded through Ultralytics. Running prediction does **not** mean HAWK-X trained the model. Do not use unverified detections as a basis for emergency decisions.
 
+## Fine-tune HAWK-X on labeled person imagery
+
+Training code for fine-tuning the pretrained model is available in [training/](training/README.md).
+A properly licensed/consented, YOLO-labeled dataset is required; none is distributed in this repository.
+
+```powershell
+py training\train.py --dataset datasets\hawkx-person --epochs 30 --batch 8
+```
+
+The checkpoint produced by fine-tuning is derived from the upstream pretrained model; it is not an independently trained HAWK-X model. Measure performance on held-out data before drawing conclusions.
+
 ## Other project folders
 
 - `mapping-3d/`: planned local point-cloud representations and example data.
