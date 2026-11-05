@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+checkpoints/
+output/
+demo-data/
+*.pt
