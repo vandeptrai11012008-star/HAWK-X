@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "matcher": "bash|powershell",
+        "bash": "python3 .github/hooks/confirm-upstream.py",
+        "powershell": "python .github/hooks/confirm-upstream.py",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}
