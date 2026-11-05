@@ -1,16 +1,10 @@
+"""HAWK-X native offline detector entry point.
 
-from ultralytics import YOLO
+Example: py vision-ai/detect.py --image path/to/photo.jpg
+Requires a checkpoint trained with train_native.py.
+"""
+from predict_native import main
 
-# Load pretrained YOLO model
-model = YOLO("yolo11n.pt")
 
-# Detect people in real time using your webcam
-for result in model.predict(
-    source=0,
-    classes=[0],
-    conf=0.4,
-    show=True,
-    save=False,
-    stream=True
-):
-    pass
+if __name__ == "__main__":
+    main()
