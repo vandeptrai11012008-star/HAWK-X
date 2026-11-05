@@ -1,0 +1,7 @@
+# Local datasets and model artifacts (do not upload private imagery or checkpoints)
+/datasets/
+/training/runs/
+*.pt
+*.onnx
+__pycache__/
+*.pyc
