@@ -1,0 +1,29 @@
+name: HAWK-X training code checks
+
+on:
+  push:
+    paths:
+      - "training/**"
+      - ".github/workflows/training-checks.yml"
+  pull_request:
+    paths:
+      - "training/**"
+      - ".github/workflows/training-checks.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dataset-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile scripts
+        run: python -m py_compile training/train.py training/evaluate.py training/test_dataset.py
+      - name: Test dataset labels and splits
+        run: python -m unittest discover -s training -p "test_*.py" -v
