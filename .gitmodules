@@ -1,0 +1,3 @@
+[submodule "vision-ai"]
+	path = vision-ai
+	url = https://github.com/ultralytics/ultralytics.git
